@@ -1,6 +1,11 @@
 console.log('javascript connected')
 
+
+/* rules:  100px = 1meter */
+
+
 const accel = 9.8
+const ball = document.getElementsByClassName('ball')[0]
 
 let initialVelocity = 0
 let finalVelocity
@@ -21,4 +26,25 @@ function dropBall(time) {
 	console.log(displacement)
 }
 
-dropBall(10)
+
+//animateDrop moves the ball based on how many seconds the object falls
+function animateDrop(timeFalling) {
+	console.log('starting drop')
+	let timeFallingCentiseconds = timeFalling * 100
+	let distanceDisplacement = 0  	// distance displacement is the number of pixels the object has moved since it's starting position
+	let timeElapsedCentiseconds = 0  	// timeElapsed is the number of seconds passed, also used for counting how many loops are being made
+
+	setInterval(function(timeFalling){
+		if(timeElapsedCentiseconds< timeFallingCentiseconds){
+			console.log('dropping ball!')
+			distanceDisplacement = initialVelocity*timeElapsedCentiseconds + .5*accel*(timeElapsedCentiseconds*timeElapsedCentiseconds);
+			ball.style.top = distanceDisplacement/100+'px';
+			timeElapsedCentiseconds += 1
+		}	
+}, 10)
+	
+}
+
+animateDrop(5)
+
+
