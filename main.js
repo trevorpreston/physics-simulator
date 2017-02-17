@@ -7,12 +7,11 @@ console.log('javascript connected')
 const accel = 9.8
 const ball = document.getElementsByClassName('ball')[0]
 
-let initialVelocity = 0
+let initialVelocity = -20
 let finalVelocity
 
+
 // v = a*t
-
-
 function updateVelocity(timeSeconds) {
 	finalVelocity = initialVelocity + accel*timeSeconds
 	console.log(finalVelocity)
@@ -38,7 +37,7 @@ function animateDrop(timeFalling) {
 		if(timeElapsedCentiseconds< timeFallingCentiseconds){
 			console.log('dropping ball!')
 			distanceDisplacement = initialVelocity*timeElapsedCentiseconds + .5*accel*(timeElapsedCentiseconds*timeElapsedCentiseconds);
-			ball.style.top = distanceDisplacement/100+'px';
+			ball.style.top = distanceDisplacement/10+'px';
 			timeElapsedCentiseconds += 1
 		}	
 }, 10)
